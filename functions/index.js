@@ -4,7 +4,11 @@ const app = require('express')();
 
 const FBAuth = require('./util/fbAuth');
 
-const  { getAllScreams, postOneScream, getScream } = require('./handlers/screams');
+const  { getAllScreams, 
+        postOneScream, 
+        getScream,
+        commentOnScream
+    } = require('./handlers/screams');
 const { signup, 
         login, 
         uploadImage, 
@@ -19,7 +23,7 @@ app.get('/scream/:screamId', getScream);
 //TODO: deleate scream
 //TODO: like a scream
 //TODO: unlike scream
-//TODO: comment on scream
+app.post('/scream/:screamId/comment', FBAuth, commentOnScream);
 
 //users route
 app.post('/signup', signup);
